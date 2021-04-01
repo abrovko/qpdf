@@ -363,13 +363,12 @@ QPDFPageObjectHelper::getAttribute(std::string const& name,
 QPDFObjectHandle
 QPDFPageObjectHelper::getTrimBox(bool copy_if_shared)
 {
-    return getCropBox(copy_if_shared);
-    // QPDFObjectHandle result = getAttribute("/TrimBox", copy_if_shared);
-    // if (result.isNull())
-    // {
-    //     result = getCropBox(copy_if_shared);
-    // }
-    // return result;
+    QPDFObjectHandle result = getAttribute("/TrimBox", copy_if_shared);
+    if (result.isNull())
+    {
+        result = getCropBox(copy_if_shared);
+    }
+    return result;
 }
 
 QPDFObjectHandle
